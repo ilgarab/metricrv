@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Target, Eye, Users, Award, Lightbulb, Shield } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import CTABanner from "@/components/CTABanner";
-import { teamMembers } from "@/data/mockData";
+import { teamMembers, companyInfo } from "@/data/mockData";
 
 const features = [
   { icon: Lightbulb, title: "Data Əsaslı Yanaşma", desc: "Hər qərarı data ilə dəstəkləyirik" },
@@ -16,16 +16,34 @@ export default function About() {
     <div className="pt-16">
       <section className="hero-gradient section-padding">
         <div className="container">
-          <SectionHeader badge="Haqqımızda" title="Haqqımızda" subtitle="Metric — Azərbaycanın aparıcı data analitikası agentliyidir" />
+          <SectionHeader badge="Haqqımızda" title="Haqqımızda" subtitle="Metric Analytics — müasir biznes dünyasında analitika və strateji həllər" />
         </div>
       </section>
 
-      {/* Story */}
+      {/* Story with image */}
       <section className="section-padding">
-        <div className="container mx-auto max-w-3xl text-center">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-lg text-muted-foreground" style={{ lineHeight: "1.8" }}>
-            Metric 2019-cu ildə Azərbaycanda data analitikası sahəsindəki boşluğu doldurmaq məqsədi ilə yaradılıb. Biz inanırıq ki, hər şirkətin datalarında gizlənmiş böyük potensial var. Missiyamız bu potensialı aşkarlayaraq bizneslərin daha ağıllı qərarlar verməsinə kömək etməkdir.
-          </motion.p>
+        <div className="container">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <img
+                src={companyInfo.aboutImage}
+                alt="Metric Analytics komandası"
+                className="w-full rounded-2xl border border-border shadow-lg"
+              />
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <h2 className="mb-4 text-2xl font-bold">Metric Analytics – Şirkətimiz Haqqında</h2>
+              <p className="mb-4 text-muted-foreground" style={{ lineHeight: "1.8" }}>
+                {companyInfo.description}
+              </p>
+              <p className="mb-4 text-muted-foreground" style={{ lineHeight: "1.8" }}>
+                {companyInfo.philosophy}
+              </p>
+              <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>
+                {companyInfo.approach}
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -86,7 +104,7 @@ export default function About() {
         <div className="container text-center">
           <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Partnyorlarımız</p>
           <div className="flex flex-wrap items-center justify-center gap-10">
-            {["Supertoys", "Metak", "Şam-fi", "AzRetail"].map((c) => (
+            {["Supertoys", "Metak", "Şam-fi", "Caspian International Hospital"].map((c) => (
               <span key={c} className="text-xl font-bold text-muted-foreground/40">{c}</span>
             ))}
           </div>

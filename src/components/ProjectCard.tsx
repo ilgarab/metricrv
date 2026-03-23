@@ -8,10 +8,11 @@ interface ProjectCardProps {
   title: string;
   serviceType: string;
   shortDesc: string;
+  image?: string;
   index?: number;
 }
 
-export default function ProjectCard({ id, company, title, serviceType, shortDesc, index = 0 }: ProjectCardProps) {
+export default function ProjectCard({ id, company, title, serviceType, shortDesc, image, index = 0 }: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
@@ -21,8 +22,14 @@ export default function ProjectCard({ id, company, title, serviceType, shortDesc
     >
       <Link to={`/projects/${id}`} className="group block h-full">
         <div className="glow-card flex h-full flex-col overflow-hidden">
-          <div className="flex h-48 items-center justify-center bg-gradient-to-br from-primary/20 to-accent/10">
-            <span className="text-4xl font-bold text-primary/30">{company[0]}</span>
+          <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/10">
+            {image ? (
+              <img src={image} alt={company} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            ) : (
+              <div className="flex h-full items-center justify-center">
+                <span className="text-4xl font-bold text-primary/30">{company[0]}</span>
+              </div>
+            )}
           </div>
           <div className="flex flex-1 flex-col p-6">
             <span className="mb-2 inline-block w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -30,7 +37,7 @@ export default function ProjectCard({ id, company, title, serviceType, shortDesc
             </span>
             <h3 className="mb-1 text-lg font-semibold tracking-tight">{title}</h3>
             <p className="mb-1 text-sm font-medium text-muted-foreground">{company}</p>
-            <p className="mb-4 flex-1 text-sm text-muted-foreground" style={{ lineHeight: "1.7" }}>{shortDesc}</p>
+            <p className="mb-4 flex-1 text-sm text-muted-foreground line-clamp-3" style={{ lineHeight: "1.7" }}>{shortDesc}</p>
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-all duration-200 group-hover:gap-3">
               Ətraflı bax <ArrowRight size={14} />
             </span>

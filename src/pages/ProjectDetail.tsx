@@ -34,6 +34,15 @@ export default function ProjectDetail() {
         </div>
       </section>
 
+      {/* Company logo & image */}
+      {project.logo && (
+        <section className="container -mt-8 mb-8">
+          <div className="mx-auto max-w-3xl">
+            <img src={project.logo} alt={project.company} className="h-20 rounded-xl border border-border bg-card p-3 shadow-lg" />
+          </div>
+        </section>
+      )}
+
       {/* Metrics */}
       <section className="section-padding-sm border-b border-border">
         <div className="container">
@@ -51,6 +60,10 @@ export default function ProjectDetail() {
       {/* Case study */}
       <section className="section-padding">
         <div className="container mx-auto max-w-3xl space-y-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="mb-4 text-xl font-bold">Şirkət haqqında</h2>
+            <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>{project.shortDesc}</p>
+          </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="mb-4 text-xl font-bold">Çağırış</h2>
             <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>{project.challenge}</p>

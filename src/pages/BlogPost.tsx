@@ -40,19 +40,27 @@ export default function BlogPost() {
         </div>
       </section>
 
+      {/* Featured image */}
+      {post.image && (
+        <section className="container -mt-8 mb-8">
+          <div className="mx-auto max-w-3xl">
+            <img src={post.image} alt={post.title} className="w-full rounded-2xl border border-border shadow-lg" />
+          </div>
+        </section>
+      )}
+
       <section className="section-padding">
         <div className="container">
           <div className="prose prose-lg mx-auto max-w-3xl text-foreground">
-            <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>{post.excerpt}</p>
-            <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>
-              Müasir biznes mühitində data analitikası şirkətlərin rəqabət üstünlüyü qazanmasında əsas rol oynayır. Doğru datanı doğru vaxtda analiz etmək, biznes qərarlarının keyfiyyətini əhəmiyyətli dərəcədə artırır.
-            </p>
-            <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>
-              Data əsaslı qərar qəbulu prosesi bir neçə əsas addımdan ibarətdir: datanın toplanması, təmizlənməsi, analiz edilməsi və vizualizasiya olunması. Bu prosesdə hər addım önəmlidir və düzgün icra olunmalıdır.
-            </p>
-            <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>
-              Şirkətlər üçün ən vacib məsələlərdən biri data mədəniyyətinin yaradılmasıdır. Komandanın hər bir üzvünün dataya əsaslanaraq düşünməsi və qərar verməsi, şirkətin ümumi performansını artırır.
-            </p>
+            {post.content ? (
+              post.content.split("\n\n").map((paragraph, i) => (
+                <p key={i} className="text-muted-foreground" style={{ lineHeight: "1.8" }}>
+                  {paragraph}
+                </p>
+              ))
+            ) : (
+              <p className="text-muted-foreground" style={{ lineHeight: "1.8" }}>{post.excerpt}</p>
+            )}
           </div>
         </div>
       </section>

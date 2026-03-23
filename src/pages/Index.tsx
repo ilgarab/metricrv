@@ -10,33 +10,23 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import StatCounter from "@/components/StatCounter";
 import CTABanner from "@/components/CTABanner";
 import { services, projects, blogPosts } from "@/data/mockData";
-
-function HeroBackground() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/5 blur-[120px]" />
-      <div className="absolute top-20 right-10 h-[300px] w-[300px] rounded-full bg-accent/5 blur-[100px]" />
-      {/* Floating data elements */}
-      <svg className="absolute top-32 left-[10%] h-8 w-8 animate-float text-primary/10" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="2" y="2" width="8" height="20" rx="1" />
-        <rect x="14" y="8" width="8" height="14" rx="1" />
-      </svg>
-      <svg className="absolute top-52 right-[15%] h-6 w-6 animate-float text-accent/10" style={{ animationDelay: "2s" }} viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="10" />
-      </svg>
-      <svg className="absolute bottom-32 left-[20%] h-10 w-10 animate-float text-primary/8" style={{ animationDelay: "4s" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polyline points="4 18 8 14 12 16 16 10 20 12" />
-      </svg>
-    </div>
-  );
-}
+import heroBg from "@/assets/hero-bg.jpg";
 
 export default function Index() {
   return (
     <div>
       {/* Hero */}
       <section className="relative flex min-h-[90vh] items-center overflow-hidden pt-16">
-        <HeroBackground />
+        {/* Background image */}
+        <div className="pointer-events-none absolute inset-0">
+          <img
+            src={heroBg}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
+        </div>
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <motion.div

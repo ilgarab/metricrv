@@ -43,6 +43,15 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Service image */}
+      {service.image && (
+        <section className="container -mt-8 mb-8">
+          <div className="mx-auto max-w-3xl">
+            <img src={service.image} alt={service.title} className="w-full rounded-2xl border border-border shadow-lg" />
+          </div>
+        </section>
+      )}
+
       {/* Process */}
       <section className="section-padding">
         <div className="container">
@@ -71,7 +80,7 @@ export default function ServiceDetail() {
       {/* Benefits */}
       <section className="section-padding bg-card/30">
         <div className="container">
-          <h2 className="mb-10 text-2xl font-bold">Üstünlüklər</h2>
+          <h2 className="mb-10 text-2xl font-bold">Xidmətə daxildir</h2>
           <div className="mx-auto max-w-2xl space-y-4">
             {service.benefits.map((b, i) => (
               <motion.div

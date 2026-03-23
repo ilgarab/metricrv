@@ -26,9 +26,14 @@ export default function TestimonialSlider() {
           transition={{ duration: 0.4 }}
         >
           <p className="mb-8 text-lg md:text-xl" style={{ lineHeight: "1.8" }}>"{t.quote}"</p>
-          <div>
-            <p className="font-semibold">{t.author}</p>
-            <p className="text-sm text-muted-foreground">{t.role}, {t.company}</p>
+          <div className="flex items-center gap-4">
+            {t.logo && (
+              <img src={t.logo} alt={t.company} className="h-10 w-10 rounded-full border border-border object-contain bg-white p-0.5" />
+            )}
+            <div>
+              <p className="font-semibold">{t.author}</p>
+              <p className="text-sm text-muted-foreground">{t.role}, {t.company}</p>
+            </div>
           </div>
         </motion.div>
       </div>

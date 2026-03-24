@@ -44,17 +44,16 @@ export default function FloatingDataIcons() {
       {icons.map(({ Icon, x, y, size, delay, duration }, i) => (
         <motion.div
           key={i}
-          className="absolute text-primary/[0.06] dark:text-primary/[0.10]"
+          className="absolute text-primary/[0.04] dark:text-primary/[0.07]"
           style={{ left: x, top: y }}
-          initial={{ opacity: 0 }}
           animate={{
-            opacity: [0, 1, 1, 0],
+            opacity: [0.2, 0.6, 0.2],
             y: [0, -18, 0, 18, 0],
             x: [0, 8, 0, -8, 0],
             rotate: [0, 5, 0, -5, 0],
           }}
           transition={{
-            opacity: { duration: 2, delay, times: [0, 0.1, 0.9, 1] },
+            opacity: { duration: duration * 0.8, delay, repeat: Infinity, ease: "easeInOut" },
             y: { duration, delay, repeat: Infinity, ease: "easeInOut" },
             x: { duration: duration * 1.3, delay, repeat: Infinity, ease: "easeInOut" },
             rotate: { duration: duration * 1.5, delay, repeat: Infinity, ease: "easeInOut" },

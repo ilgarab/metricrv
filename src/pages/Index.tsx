@@ -9,8 +9,8 @@ import BlogCard from "@/components/BlogCard";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import StatCounter from "@/components/StatCounter";
 import CTABanner from "@/components/CTABanner";
+import FloatingDataIcons from "@/components/FloatingDataIcons";
 import { services, projects, blogPosts } from "@/data/mockData";
-import heroBg from "@/assets/hero-bg.jpg";
 
 export default function Index() {
   return (

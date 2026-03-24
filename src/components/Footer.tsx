@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import metricLogo from "@/assets/metric-logo.png";
 
 export default function Footer() {
   return (
@@ -9,11 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-              <div className="flex items-end gap-0.5">
-                <div className="h-4 w-1 rounded-full bg-primary" />
-                <div className="h-6 w-1 rounded-full bg-accent" />
-                <div className="h-3 w-1 rounded-full bg-primary" />
-              </div>
+              <img src={metricLogo} alt="Metric" className="h-7 w-auto" />
               <span>metric</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground" style={{ lineHeight: "1.7" }}>

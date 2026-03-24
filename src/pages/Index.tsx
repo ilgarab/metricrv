@@ -9,24 +9,19 @@ import BlogCard from "@/components/BlogCard";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import StatCounter from "@/components/StatCounter";
 import CTABanner from "@/components/CTABanner";
+import FloatingDataIcons from "@/components/FloatingDataIcons";
 import { services, projects, blogPosts } from "@/data/mockData";
-import heroBg from "@/assets/hero-bg.jpg";
 
 export default function Index() {
   return (
     <div>
       {/* Hero */}
       <section className="relative flex min-h-[90vh] items-center overflow-hidden pt-16">
-        {/* Background image */}
-        <div className="pointer-events-none absolute inset-0">
-          <img
-            src={heroBg}
-            alt=""
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
-        </div>
+        {/* Gradient background */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/[0.06] via-transparent to-background" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+        {/* Floating data icons */}
+        <FloatingDataIcons />
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <motion.div

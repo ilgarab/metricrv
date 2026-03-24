@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-import metricLogo from "@/assets/metric-logo-clean.png";
+import metricLogo from "@/assets/metric-icon.png";
 
 export default function Footer() {
   return (

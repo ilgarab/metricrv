@@ -4,7 +4,7 @@ import { Menu, X, Sun, Moon, BarChart3 } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import metricLogo from "@/assets/metric-logo-clean.png";
+import metricLogo from "@/assets/metric-icon.png";
 
 const links = [
   { href: "/services", label: "Xidmətlər" },

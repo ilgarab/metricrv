@@ -9,19 +9,31 @@ import BlogCard from "@/components/BlogCard";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import StatCounter from "@/components/StatCounter";
 import CTABanner from "@/components/CTABanner";
-import FloatingDataIcons from "@/components/FloatingDataIcons";
 import { services, projects, blogPosts } from "@/data/mockData";
+import heroBgDark from "@/assets/hero-bg-dark.jpg";
+import heroBgLight from "@/assets/hero-bg-light.jpg";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function Index() {
+  const { theme } = useTheme();
+  const heroBg = theme === "dark" ? heroBgDark : heroBgLight;
+
   return (
     <div>
       {/* Hero */}
       <section className="relative flex min-h-[90vh] items-center overflow-hidden pt-16">
-        {/* Gradient background */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/[0.06] via-transparent to-background" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
-        {/* Floating data icons */}
-        <FloatingDataIcons />
+        {/* Background wallpaper */}
+        <div className="pointer-events-none absolute inset-0">
+          <img
+            src={heroBg}
+            alt=""
+            className="h-full w-full object-cover"
+            width={1920}
+            height={1080}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
+        </div>
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <motion.div

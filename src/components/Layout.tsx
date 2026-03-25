@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="relative flex min-h-screen flex-col">
       <FloatingDataIcons />
       <Navbar />
-      <main className="relative z-[1] flex-1">{children}</main>
+      <main className="relative z-[3] flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
     </div>

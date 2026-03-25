@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BarChart3,
@@ -38,7 +37,12 @@ const iconDefs = [
   { Icon: Percent, size: 22 },
 ];
 
-// Generate repeating icon positions spread across full page content
+// Seeded random for consistent positions
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
 function generateIcons() {
   const result: {
     Icon: typeof BarChart3;
@@ -49,22 +53,23 @@ function generateIcons() {
     duration: number;
   }[] = [];
 
-  const rows = 20; // 20 rows of icons spread down the page
-  const perRow = 3; // 3 icons per row
+  const rows = 30;
+  const perRow = 4;
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < perRow; col++) {
-      const idx = (row * perRow + col) % iconDefs.length;
+      const seed = row * perRow + col;
+      const idx = seed % iconDefs.length;
       const { Icon, size } = iconDefs[idx];
-      const xBase = (col / perRow) * 100 + 5 + Math.random() * 25;
-      const yPx = row * 350 + Math.random() * 200;
+      const xBase = (col / perRow) * 100 + 3 + seededRandom(seed * 7) * 20;
+      const yPx = row * 280 + seededRandom(seed * 13) * 180;
       result.push({
         Icon,
-        x: `${Math.min(xBase, 93)}%`,
+        x: `${Math.min(xBase, 95)}%`,
         y: yPx,
         size,
-        delay: Math.random() * 3,
-        duration: 5 + Math.random() * 5,
+        delay: seededRandom(seed * 3) * 4,
+        duration: 6 + seededRandom(seed * 11) * 6,
       });
     }
   }
@@ -75,23 +80,26 @@ const icons = generateIcons();
 
 export default function FloatingDataIcons() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" style={{ minHeight: "100%" }}>
+    <div
+      className="pointer-events-none fixed inset-0 overflow-hidden"
+      style={{ zIndex: 2 }}
+    >
       {icons.map(({ Icon, x, y, size, delay, duration }, i) => (
         <motion.div
           key={i}
-          className="absolute text-primary/20 dark:text-primary/15"
+          className="absolute text-primary/30 dark:text-primary/20"
           style={{ left: x, top: y }}
           animate={{
-            opacity: [0.3, 0.8, 0.3],
-            y: [0, -20, 0, 20, 0],
-            x: [0, 10, 0, -10, 0],
-            rotate: [0, 8, 0, -8, 0],
+            opacity: [0, 0.5, 0.8, 0.5, 0],
+            y: [0, -30, -10, 20, 0],
+            x: [0, 15, 0, -15, 0],
+            rotate: [0, 10, 0, -10, 0],
           }}
           transition={{
-            opacity: { duration: duration * 0.7, delay, repeat: Infinity, ease: "easeInOut" },
-            y: { duration, delay, repeat: Infinity, ease: "easeInOut" },
-            x: { duration: duration * 1.2, delay, repeat: Infinity, ease: "easeInOut" },
-            rotate: { duration: duration * 1.4, delay, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: duration, delay, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: duration * 1.1, delay, repeat: Infinity, ease: "easeInOut" },
+            x: { duration: duration * 1.3, delay, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: duration * 1.5, delay, repeat: Infinity, ease: "easeInOut" },
           }}
         >
           <Icon size={size} strokeWidth={1.5} />
